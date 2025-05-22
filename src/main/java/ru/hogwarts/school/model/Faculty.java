@@ -1,8 +1,11 @@
 package ru.hogwarts.school.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,5 +27,10 @@ public class Faculty {
 
     @Column(name = "faculty_color")
     private String color;
+
+    @OneToMany(mappedBy = "faculty")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @JsonIgnore
+    private List<Student> students;
 
 }

@@ -25,4 +25,7 @@ public class Student {
     @Column(name = "age")
     private int age;
 
+    @ManyToOne
+    @JoinColumn(name = "faculty_id")
+    private Faculty faculty;
 }
