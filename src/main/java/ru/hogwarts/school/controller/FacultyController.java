@@ -64,4 +64,9 @@ public class FacultyController {
     public List<Student> getByStudentFaculty(String name) {
         return facultyService.getStudentFaculty(name);
     }
+
+    @GetMapping("/school")
+    public ResponseEntity getInfoAboutSchool() {
+        return ResponseEntity.ok("Hogwarts it the beast school in the world!");
+    }
 }

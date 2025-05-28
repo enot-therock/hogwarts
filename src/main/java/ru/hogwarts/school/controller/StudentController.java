@@ -62,7 +62,10 @@ public class StudentController {
             return ResponseEntity.ok(studentService.getStudentByFaculty(id));
         }
         return ResponseEntity.ok(studentService.allStudent());
-
     }
 
+    @GetMapping("/school")
+    public ResponseEntity getInfoAboutSchool() {
+        return ResponseEntity.ok("Hogwarts it the beast school in the world!");
+    }
 }
