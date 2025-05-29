@@ -38,7 +38,7 @@ public class StudentController {
         if (editStudent == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        return ResponseEntity.ok(student);
+        return ResponseEntity.ok(editStudent);
     }
 
     @DeleteMapping("/{id}")
