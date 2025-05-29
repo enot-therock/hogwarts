@@ -17,6 +17,7 @@ import ru.hogwarts.school.service.StudentService;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+
 @ExtendWith(MockitoExtension.class)
 public class StudentControllerWebMvcTest {
 
