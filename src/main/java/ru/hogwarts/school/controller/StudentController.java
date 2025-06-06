@@ -1,5 +1,6 @@
 package ru.hogwarts.school.controller;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -68,4 +69,5 @@ public class StudentController {
     public ResponseEntity getInfoAboutSchool() {
         return ResponseEntity.ok("Hogwarts it the beast school in the world!");
     }
+
 }

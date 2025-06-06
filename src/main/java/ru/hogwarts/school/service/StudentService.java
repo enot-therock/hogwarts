@@ -1,6 +1,8 @@
 package ru.hogwarts.school.service;
 
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.model.Student;
@@ -57,6 +59,18 @@ public class StudentService {
     public List<Student> getStudentByFaculty(Long id) {
         Faculty currentFaculty = facultyService.findFaculty(id);
         return currentFaculty.getStudents();
+    }
+
+    public Integer getByAllStudent() {
+        return studentRepository.getByAllStudent();
+    }
+
+    public Integer getByMiddleAgeStudent() {
+        return studentRepository.getByMiddleAgeStudent();
+    }
+
+    public List<Student> getLastFiveStudent() {
+        return studentRepository.getLastFiveStudent();
     }
 
 }
