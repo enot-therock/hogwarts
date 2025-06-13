@@ -48,6 +48,11 @@ public class StudentController {
         return ResponseEntity.ok().build();
     }
 
+    @GetMapping("/name")
+    public ResponseEntity<List<Student>> getStudentName(@RequestParam String name) {
+        return ResponseEntity.ok(studentService.getStudentName(name));
+    }
+
     @GetMapping
     public ResponseEntity<List<Student>> findAllStudent(@RequestParam(required = false) Integer age,
                                                         @RequestParam(required = false) Integer minAge,

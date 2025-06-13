@@ -61,6 +61,10 @@ public class StudentService {
         return currentFaculty.getStudents();
     }
 
+    public List<Student> getStudentName(String name) {
+        return studentRepository.findByNameIgnoreCase(name);
+    }
+
     public Integer getByAllStudent() {
         return studentRepository.getByAllStudent();
     }
