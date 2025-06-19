@@ -3,6 +3,7 @@ package ru.hogwarts.school.service;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.amqp.RabbitProperties;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -95,4 +97,17 @@ public class StudentService {
         return studentRepository.getLastFiveStudent();
     }
 
+    public List<Student> getAllStudentWhoseNameStartsWithA() {
+        logger.debug("The method for getting all Students whose name starts with - A");
+        return studentRepository.findAll().stream()
+                    .filter(n -> n.getName().toUpperCase().startsWith("A"))
+                    .sorted(Comparator.comparing(Student::getName))
+                    .toList();
+    }
+
+    public Double getMiddleAgeStudent() {
+        logger.debug("The method for getting middle age Students");
+        return studentRepository.findAll().stream()
+                .mapToDouble(Student::getAge).average().orElseThrow();
+    }
 }

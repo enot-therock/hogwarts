@@ -64,4 +64,19 @@ public class FacultyController {
     public List<Student> getByStudentFaculty(String name) {
         return facultyService.getStudentFaculty(name);
     }
+
+    @GetMapping("/longerNameFaculty")
+    public Faculty getLongerNameFaculty() {
+        return facultyService.getLongerNameFaculty();
+    }
+
+    @GetMapping("/faster_sum")
+    public String getIntegerNumber() {
+        return facultyService.getIntegerNumber();
+    }
+
+    @GetMapping("/sum_test")
+    public String getSum() {
+        return facultyService.getIntegerNumber_test();
+    }
 }

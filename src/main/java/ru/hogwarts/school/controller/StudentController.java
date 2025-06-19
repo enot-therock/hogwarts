@@ -69,4 +69,14 @@ public class StudentController {
         }
         return ResponseEntity.ok(studentService.allStudent());
     }
+
+    @GetMapping("/nameStartsWhit_A")
+    public List<Student> getAllStudentWhoseNameWithA() {
+        return studentService.getAllStudentWhoseNameStartsWithA();
+    }
+
+    @GetMapping("/middleAgeStudent")
+    public ResponseEntity<Double> getMiddleAgeStudent() {
+        return ResponseEntity.ok(studentService.getMiddleAgeStudent());
+    }
 }
