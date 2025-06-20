@@ -110,4 +110,50 @@ public class StudentService {
         return studentRepository.findAll().stream()
                 .mapToDouble(Student::getAge).average().orElseThrow();
     }
+
+    public List<Student> getParallelThreadAllStudents() {
+        logger.debug("The method for getting list all student by using parallel thread");
+        List<Student> students = studentRepository.findAll();
+
+        System.out.println("Первый студент: " + students.get(0).getName());
+        System.out.println("Второй студент: " + students.get(1).getName());
+
+        new Thread(() -> {
+            System.out.println("Третий студент: " + students.get(2).getName());
+            System.out.println("Четвертый студент: " + students.get(3).getName());
+        }).start();
+
+        new Thread(() -> {
+            System.out.println("Пятый студент: " + students.get(4).getName());
+            System.out.println("Шестой студент: " + students.get(5).getName());
+        }).start();
+
+        return students;
+    }
+
+    public List<Student> getParallelSynchronizedThread() {
+        logger.info("The method for getting all student by using" +
+                " parallel synchronized thread");
+        List<Student> students = studentRepository.findAll();
+
+        System.out.println("Первый студент: " + students.get(0).getName());
+        System.out.println("Второй студент: " + students.get(1).getName());
+
+        new Thread(() -> {
+            synchronized (students) {
+                System.out.println("Третий студент: " + students.get(2).getName());
+                System.out.println("Четвертый студент: " + students.get(3).getName());
+            }
+        }).start();
+
+        new Thread(() -> {
+            synchronized (students) {
+                System.out.println("Пятый студент: " + students.get(4).getName());
+                System.out.println("Шестой студент: " + students.get(5).getName());
+            }
+        }).start();
+
+        return students;
+    }
+
 }

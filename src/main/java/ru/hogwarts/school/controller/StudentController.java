@@ -79,4 +79,14 @@ public class StudentController {
     public ResponseEntity<Double> getMiddleAgeStudent() {
         return ResponseEntity.ok(studentService.getMiddleAgeStudent());
     }
+
+    @GetMapping("/print-parallel")
+    public List<Student> getParallelThreadAllStudents() {
+        return studentService.getParallelThreadAllStudents();
+    }
+
+    @GetMapping("/print-synchronized")
+    public List<Student> getParallelSynchronizedThread() {
+        return studentService.getParallelSynchronizedThread();
+    }
 }
